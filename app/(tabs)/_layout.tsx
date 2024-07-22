@@ -3,15 +3,29 @@ import { Tabs } from "expo-router";
 import { Feather } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
+import Colors from "@/constants/Colors";
+import { View } from "react-native";
+import { ColorSpace } from "react-native-reanimated";
 export default function TabLayout() {
   return (
-    <Tabs screenOptions={{ tabBarActiveTintColor: "blue" }}>
+    <Tabs
+      screenOptions={{
+        tabBarStyle: {
+          backgroundColor: Colors.bgColor,
+          borderTopWidth: 0,
+          padding: 0,
+        },
+        tabBarShowLabel: false,
+        tabBarActiveTintColor: Colors.black,
+        tabBarInactiveTintColor: "#999",
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
           title: "Home",
           tabBarIcon: ({ color }) => (
-            <Ionicons name="compass" size={24} color="blue" />
+            <Ionicons name="compass" size={24} color={color} />
           ),
         }}
       />
@@ -20,7 +34,7 @@ export default function TabLayout() {
         options={{
           title: "Category",
           tabBarIcon: ({ color }) => (
-            <MaterialIcons name="space-dashboard" size={24} color="black" />
+            <MaterialIcons name="space-dashboard" size={24} color={color} />
           ),
         }}
       />
@@ -28,7 +42,17 @@ export default function TabLayout() {
         name="search"
         options={{
           tabBarIcon: ({ color }) => (
-            <Ionicons name="search" size={24} color="black" />
+            <View
+              style={{
+                backgroundColor: Colors.primaryColor,
+                paddingHorizontal: 16,
+                paddingVertical: 12,
+                borderRadius: 10,
+                height: 50,
+              }}
+            >
+              <Ionicons name="search-outline" size={24} color={Colors.white} />
+            </View>
           ),
         }}
       />
@@ -36,7 +60,7 @@ export default function TabLayout() {
         name="bookmarks"
         options={{
           tabBarIcon: ({ color }) => (
-            <Ionicons name="bookmarks" size={24} color="black" />
+            <Ionicons name="bookmarks" size={24} color={color} />
           ),
         }}
       />
@@ -44,7 +68,7 @@ export default function TabLayout() {
         name="profile"
         options={{
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="user" size={24} color="black" />
+            <FontAwesome name="user" size={24} color={color} />
           ),
         }}
       />
